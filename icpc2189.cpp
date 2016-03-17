@@ -5,26 +5,9 @@
 #include <iostream>
 #include <sstream>
 #include <iomanip>
-#include <math.h>
 #include <fstream>
 
 using namespace std;
-
-#ifndef ONLINE_JUDGE
-const string test_data = "3\n"
-        "01711322396\n"
-        "01711322397\n"
-        "01711322398\n"
-        "7\n"
-        "01187239192\n"
-        "01711322396\n"
-        "01711322397\n"
-        "01711322398\n"
-        "01711322399\n"
-        "01711322400\n"
-        "01711389821\n"
-        "0\n";
-#endif
 
 class Data {
 private:
@@ -47,25 +30,25 @@ public:
     }
 
     void readData(istream& input) {
-        input >> number;
+        input >> curr;
         long diff = 0;
-        curr = stol(number);
+        //curr = stol(number);
         for (int i = 0; i < turns; ++i) {
             if(i != turns - 1) {
-                input >> nextnumber;
-                next = stol(nextnumber);
+                input >> next;
+                //next = stol(nextnumber);
             }
             if(next - curr == diff + 1)
                 diff++;
             else {
                 if(diff == 0)
-                    cout << number << endl;
+                    cout << "0" << curr << endl;
                 else {
-                    cout << number << "-" << getSuffix(diff) << endl;
+                    cout << "0" << curr << "-" << getSuffix(diff) << endl;
                 }
                 diff = 0;
-                number = nextnumber;
-                curr = stol(number);
+                curr = next;
+                //curr = stol(number);
             }
         }
         input >> turns;
